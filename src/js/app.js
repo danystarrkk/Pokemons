@@ -45,10 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mainPokemon += `
       <div class="contPokemon"> 
         <h3 class="pokemonName">${pokemon.name}</h3> 
+        <div class="contentImg"></div>
       </div>`
     })
-
     main.innerHTML = mainPokemon;
+    // #endregion
 
     // # region Intersect Observ
 
@@ -65,13 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
     });
-
     // # endregion
 
     // #region Image
     let urlImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
     let urlGifLoad = "https://i.ibb.co/b4HPfpw/4xjS.gif"
-    const pokemonsHTML = document.querySelectorAll(".contPokemon");
+    const pokemonsHTML = document.querySelectorAll(".contentImg");
 
     pokemons.forEach((pokemon, index) => {
       let number = pokemon.url.substring(pokemon.url.lastIndexOf("s/") + 2, pokemon.url.lastIndexOf("/"));
@@ -86,11 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
       pokemonsHTML[index].appendChild(img);
       imgObserver.observe(img);
     });
-
   }
   // #endregion
 
-  // # region Click Detect
+  // #region Region Option
   let options = document.querySelectorAll('.option');
   let generationOption = 1;
 
@@ -100,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
       generationOption = index + 1;
       insertPokemons(generationOption);
     }
-  })
+  });
   // #endregion
+
 });
